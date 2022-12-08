@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String List</title>
+</head>
+<body>
+    <h2>Enter a String</h2>
+    <input type="text" id="inptxt" placeholder="Enter a text">
+    <button id="btn" onclick="perform()">Submit</button>
+    <p id="list"></p>
+    <p id="Mylen"></p>
+    
+</body>
+<script>
+    Original_string = ["hello","hi","hola","namaste"];
+    document.getElementById("list").innerHTML = "String list contains: "+Original_string
+
+    MyLength =[]
+    function perform() {
+    newstr = document.getElementById("inptxt").value
+    Original_string.unshift(newstr)
+
+    document.getElementById("list").innerHTML = "String list contains: "+Original_string
+    
+    StrLen(Original_string,(x)=> x.length)
+    }
+   
+    
+
+   
+    function StrLen(StrList, callback)
+    { 
+
+        for(i=0;i<StrList.length;i++)
+        {
+            MyLength[i] = callback(StrList[i]);
+        }
+        document.getElementById("Mylen").innerHTML = "String Length is: "+MyLength
+    }
+
+    
+</script>
+</html>

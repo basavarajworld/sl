@@ -1,0 +1,55 @@
+9. The function LetterSurround(str) needs to find out if the string passed is an acceptable sequence 
+by either returning true or false. The string parameter will be composed of + and = symbols with 
+several characters between them. For the string to be true each letter must be surrounded by + 
+symbol. Test Cases: The string will not be empty and will have at least one letter
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Document</title>
+ <style>
+ body{
+ background-color: burlywood;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ }
+ input{
+ width: 300px;
+ }
+ button{
+ width: 100px;
+ }
+ 
+ </style>
+</head>
+<body>
+ <h1>Test String If Each letter is Surrounded by '+' Symbol</h1>
+ <h3>Enter Your String Here: </h3><br>
+ <input type="text" name="InpTxt" id="InpTxt">
+ <button id='TestStr' onclick="SimpleSymbols('+d+===+a+')">
+ Submit
+ </button>
+ <h4 id="Result" style="color: white;">
+ </h4>
+ <script>
+ function SimpleSymbols() { 
+var str= document.getElementById("InpTxt").value;
+var abc = 'abcdefghijklmnopqrstuvwxyz';
+for (var i = 0; i < str.length; i++) {
+ if (abc.indexOf(str[i]) !== -1) {
+ if (str[i-1] + str[i+1] === "++") {
+ document.getElementById('Result').innerHTML = 'True';
+ }
+ else {
+ document.getElementById('Result').innerHTML = 'False';
+ 
+ }
+ }
+}
+}
+ </script>
+</body>
+</html>

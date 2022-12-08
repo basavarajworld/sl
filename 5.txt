@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Document</title>
+ <style>
+ body{
+ background-color: darkcyan;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ }
+ input{
+ width: 300px;
+ }
+ button{
+ width: 100px;
+ }
+ 
+ </style>
+</head>
+<body>
+ <h1>String Letter Replacement</h1>
+ <h3>Enter Your String Here</h3><br>
+ <input type="text" name="TestStr" id="TestStr">
+ <button id='strChange' onclick="LetterChanges()">
+ Click here
+ </button>
+ <h4 id="revDisplay" style="color: white;">
+ </h4>
+<script>
+function LetterChanges() { 
+ var str = document.getElementById("TestStr").value;
+ var alpha = "abcdefghijklmnopqrstuvwxyz";
+ var newAlpha = "bcdEfghIjklmnOpqrstUvwxyzA";
+ var answer = "";
+ 
+ for (i = 0; i < str.length; i++)
+ {
+ if (alpha.indexOf(str[i]) !== -1) {
+ answer += newAlpha.charAt(alpha.indexOf(str[i]));
+ } else {
+ answer += str[i];
+ }
+ }
+ document.getElementById('revDisplay').innerHTML = "The Letter Changed string is: "+answer;
+ 
+ 
+}
+</script>
+</body>
+</html>

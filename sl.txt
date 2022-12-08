@@ -1,0 +1,606 @@
+PART A
+
+1
+
+numList = []
+n = int(input('Enter the size of the list: '))
+print('Enter the elements now')
+for i in range(0,n):
+    ele = int(input())
+    numList.append(ele)
+
+print('The list elements are:',numList)
+
+print("The maximum element is: ",max(numList))
+print("The minimum element is: ",min(numList))
+
+ele=int(input("Enter a new element into List: "))
+numList.append(ele)
+
+print('The list elements are:',numList)
+
+dele = int(input('Enter a number in list to be deleted: '))
+
+if dele in numList:
+    numList.remove(dele)
+    print('The list elements are:',numList)
+else:
+    print("Element not found!!")
+
+
+2
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>Mini cart</title>
+</head>
+<body>
+ 
+ <select id="sel1">
+ <option id="milk" value="12">Milk (Rs 12)</option>
+ <option id="eggs" value="20">Eggs (Rs 20)</option>
+ <option id="bread" value="30">Bread (Rs 30)</option>
+ <option id="Jam" value="30">Jam (Rs 30)</option>
+ <option id="Butter" value="50">Butter (Rs 50)</option>
+ <option id="Bacon" value="45">Bacon (Rs 45)</option>
+ </select>
+ 
+ <input type="number" min="0" id="qty" placeholder="Enter Quantity">
+ <input type="button" name="calculate" value="Calculate" onclick="calculate()">
+ <p id="ans" hidden> The price of the selected items is :
+ <span id="res"></span>
+ </p>
+ <button onclick="payAmount()">Pay</button>
+</body>
+<script >
+ function calculate(){
+ var price = document.getElementById("sel1").value;
+ var qty = document.getElementById("qty").value;
+ var ans = price*qty;
+ alert("Payable amount: " + ans)
+ console.log(ans)
+ document.getElementById("ans").removeAttribute("hidden")
+ document.getElementById("res").innerHTML = ans;
+}
+ 
+ function payAmount() {
+ alert("Amount successfully paid!");
+ }
+</script>
+</html>
+
+
+
+3
+
+class Rectangle:
+    def __init__(self,l,b):  #type two _ _ together for init 
+        self.l = l
+        self.b = b
+        
+    def area(self):
+        return self.l*self.b
+
+x = int(input("Enter the length: "))
+y = int(input("Enter the breadth: "))
+obj = Rectangle(x,y)
+print("Area of the rectangle is: ",obj.area())
+
+
+4
+
+def menu():
+    print("MENU\n1.Celsius\n2.Farenheit\n3.Kelvin\n4.Exit")
+
+def celsius(t):
+    if t == 2:
+        return str(tempnum*(9/5)+32)+'F'
+    if t == 3:
+        return str(tempnum + 273.15)+'K'
+
+def farenheit(t):
+    if t == 1:
+        return str((tempnum-32)*(5/9))+'C'
+    if t == 3:
+        return str( (tempnum-32)*(5/9)+ 273.15)+'K'
+
+def kelvin(t):
+    if t == 2:
+        return str((tempnum-273.15)*(9/5)+32)+'F'
+    if t == 1:
+        return str(tempnum - 273.15)+'C'
+
+TemList = []
+
+while True: 
+    menu()
+    fromN = int(input("Enter the unit of temperature to be converted: "))
+    if(fromN == 4):
+        print(TemList)
+        exit
+    tempnum = float(input("Enter the value of temperature: "))
+    toN = int(input("Enter the unit of temprature to convert to: "))
+    
+    if(toN == 4):
+        print(TemList)
+        exit
+
+    if(fromN == 1):
+        newtemp = celsius(toN)
+        print("Converted value is : ",newtemp)
+        TemList.append(str(tempnum)+'C -> '+newtemp)
+    elif(fromN == 2):
+        newtemp = farenheit(toN)
+        print("Converted value is : ",newtemp)
+        TemList.append(str(tempnum)+'F -> '+newtemp)
+    elif(fromN == 3):
+        newtemp = kelvin(toN)
+        print("Converted value is : ",newtemp)
+        TemList.append(str(tempnum)+'K -> '+newtemp)
+    else: 
+       print("Please enter a valid option! ")
+
+
+
+5
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Document</title>
+ <style>
+ body
+{
+ background-color: darkcyan;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ }
+ input{
+ width: 300px;
+ }
+ button{
+ width: 100px;
+ }
+ 
+ </style>
+</head>
+<body>
+ <h1>String Letter Replacement</h1>
+ <h3>Enter Your String Here</h3><br>
+ <input type="text" name="TestStr" id="TestStr">
+ <button id='strChange' onclick="LetterChanges()">
+ Click here
+ </button>
+ <h4 id="revDisplay" style="color: white;">
+ </h4>
+<script>
+function LetterChanges() { 
+ var str = document.getElementById("TestStr").value;
+ var alpha = "abcdefghijklmnopqrstuvwxyz";
+ var newAlpha = "bcdEfghIjklmnOpqrstUvwxyzA";
+ var answer = "";
+ 
+ for (i = 0; i < str.length; i++)
+ {
+ if (alpha.indexOf(str[i]) !== -1) {
+ answer += newAlpha.charAt(alpha.indexOf(str[i]));
+ } else {
+ answer += str[i];
+ }
+ }
+ document.getElementById('revDisplay').innerHTML = "The Letter Changed string is: "+answer;
+}
+</script>
+</body>
+</html>
+
+
+
+6
+
+elements = {
+   "H": "Hydrogen",
+   "He": "Helium",
+   "C": "Carbon",
+   "N": "Nitrogen",
+   "Al": "Aluminium"
+}
+
+print("Initial elements in list are: ",elements)
+
+symbol = input("Enter a new symbol: ")
+name = input("Enter the element's name: ")
+elements.update({symbol : name})
+
+print("Elements in the dictionary now: ",elements)
+
+print("Number of atomic elements in dictionary: ",len(elements))
+
+a = input("Enter an element to search: ")
+if a in elements:
+   print("element found: ",elements.get(a))
+else: 
+   print("Element not found!")
+
+
+
+7
+
+class Student: 
+    def __init__(self):
+       pass
+    def accept(self):
+        self.name = input("Enter Student name: ")
+        self.age = input("Enter Student age: ")
+        m1 = int(input("Enter the marks os subject 1: "))
+        m2 = int(input("Enter the marks os subject 2: "))
+        m3 = int(input("Enter the marks os subject 3: "))
+        self.marks = [m1,m2,m3]
+    def display(self):
+        print("Name of the Student: ",self.name)
+        print("Age of the Student: ",self.age)
+        print("Marks of the Student: ",self.marks)
+
+s1 = Student()
+s1.accept()
+print("*****Student Details*****")
+s1.display()
+
+
+
+8
+
+# numList = [88,69,76,10,83,33]
+from functools import reduce #dont forget to import it
+
+
+numList = []
+print("Enter 6 numbers to list: ")
+for i in range(0,6):
+    temp = int(input())
+    numList.append(temp)
+
+print("The original list is: ",numList)
+
+newList = [3*x for x in numList ]
+print("The new list after multiplying by 3: ",newList)
+
+sum1 = reduce(lambda x,y: x+y, numList)
+sum2 = reduce(lambda x,y: x+y,newList)
+
+print("The sum of original list is : ",sum1)
+print("The sum of new list is : ",sum2)
+
+
+
+9
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Document</title>
+ <style>
+ body{
+ background-color: burlywood;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ }
+ input{
+ width: 300px;
+ }
+ button{
+ width: 100px;
+ }
+ 
+ </style>
+</head>
+<body>
+ <h1>Test String If Each letter is Surrounded by '+' Symbol</h1>
+ <h3>Enter Your String Here: </h3><br>
+ <input type="text" name="InpTxt" id="InpTxt">
+ <button id='TestStr' onclick="SimpleSymbols('+d+===+a+')">
+ Submit
+ </button>
+ <h4 id="Result" style="color: white;">
+ </h4>
+ <script>
+ function SimpleSymbols() { 
+var str= document.getElementById("InpTxt").value;
+var abc = 'abcdefghijklmnopqrstuvwxyz';
+for (var i = 0; i < str.length; i++) {
+ if (abc.indexOf(str[i]) !== -1) {
+ if (str[i-1] + str[i+1] === "++") {
+ document.getElementById('Result').innerHTML = 'True';
+ }
+ else {
+ document.getElementById('Result').innerHTML = 'False';
+ 
+ }
+ }
+}
+}
+ </script>
+</body>
+</html>
+
+
+
+10
+
+<!DOCTYPE html>
+<html>
+<head>
+<title> BAKERY MENU </title>
+<script type = "text/javascript">
+function addby() {
+num1= document.getElementById("cake").value;
+var e1 = document.getElementById("cakeflav");
+var e2 = document.getElementById("biscuitflav");
+var e3 = document.getElementById("pastryflav");
+var price1 = e1.options[e1.selectedIndex].value;
+var price2 = e2.options[e2.selectedIndex].value;
+var price3 = e3.options[e3.selectedIndex].value;
+num2= document.getElementById("biscuit").value;
+num3= document.getElementById("pastry").value;
+var x = parseInt(num1)*price1 + parseInt(num2)*price2 + parseInt(num3)*price3 ;
+document.getElementById("result").innerHTML = x;
+}
+</script>
+<body>
+ <h1>Bakery menu</h1>
+ <label><h2> CAKE </h2></label></br>
+ <label><b>Choose the flavor </b></label>
+ <select id="cakeflav">
+ <option></option>
+ <option value="10">Pineapple(10)</option>
+ <option value="15">chocolate(15)</option>
+ <option value="12">mixedfruit(12)</option>
+ <option value="12">Butterscotch(12)</option>
+ </select>
+</br></br>
+ <label><b>Choose the number of cakes you want</b></label>
+ <input type="text" name="message" id="cake" ></br></br>
+ <label><h2> BISCUIT </h2></label>
+ <label><b>Choose the flavor </b></label>
+ <select id="biscuitflav">
+ <option></option>
+ <option value="20">jimjam(20)</option>
+ <option value="15">Vanilla(15)</option>
+ </select></br></br>
+ <label><b>Choose the number of biscuits you want</b></label> 
+ <input type="text" name="message" id="biscuit"></br></br> 
+ <label><h2> PASTRY </h2></label>
+ <label><b>Choose the flavor </b></label>
+ <select id="pastryflav">
+ <option></option>
+ <option value="10">Pineapple(10)</option>
+ <option value="12">chocolate(12)</option>
+ <option value="15">Butterscotch(15)</option>
+</select></br></br>
+ <label><b>Choose the number of pastries you want</b></label>
+ <input type="text" name="message" id="pastry"></br>
+ <input type="button" value=" submit " onClick="addby();"/> </br></br>
+<p> Your total bill amount is : </p>
+<p><span id='result'></span></p>
+</body>
+</head>
+</html>
+
+
+
+PART B
+
+1
+
+class RevString:
+    reverse = ""
+    vowels = ['a','e','i','o','u']
+    
+    def __init__(self,sentence):
+        self.sentence = sentence
+        
+    def reverse(self):
+            return " ".join(reversed(self.sentence.split()))
+    def vowelcnt(self):
+            return sum(x in self.vowels for x in self.sentence)     
+
+items =[]
+for i in range(0,3):
+       objrev = RevString(input("Enter a Sentence: "))
+       print("The reversed sentence is: ",objrev.reverse())
+       items.append(objrev) 
+
+print("*****displaying in descending order of number of vowels*****") 
+
+for i in sorted(items, key = lambda item:item.vowelcnt(), reverse= True):
+    print(i.reverse(), "->",i.vowelcnt())
+
+
+2
+
+import sys
+from functools import reduce
+from collections import Counter
+f = open("file.txt")
+contents = f.read().split()
+dict = Counter(contents)
+print("Number of occurences of words in the file: ")
+print(dict)
+
+s = sorted(dict.items(), key = lambda x:x[1], reverse= True)  
+#.items() converts key-value pair to tuples , and
+#  x[1] is the second element in the tuple which is the number of occurence.
+
+print("Top 10 occuring words: ")
+print(s[:10])
+
+print("The length of each word : ")
+wordlen = [len(x) for x,y in s[:]]
+print(wordlen)
+
+
+avg = reduce(lambda x,y: x+y, wordlen)/len(wordlen)
+print("Average length of words is: ",avg)
+
+
+
+
+3
+
+#numpy - Deals multi-dimensional arrays and matrices
+#seaborn - Deals with data visualization
+#matplotlib - Plotting; pyplot-interactive plotting
+#pandas - data structures and data analysis tools"""
+#import numpy as np 
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
+titanic_df = pd.read_csv('train.csv')
+
+# Convert the survived column to strings for easier reading
+titanic_df ['Survived'] = titanic_df ['Survived'].map({
+    0: 'Died',
+    1: 'Survived'
+})
+
+print("======Data Headers Before Dropping Columns=======")
+print(titanic_df.head(5))
+
+print("**** \n\nDATA TRANSFORMATION *****\n")
+
+print("======Data Headers After Dropping Columns - First Way=======")
+titanic_df.drop(['Parch','PassengerId','Name','Ticket'], axis=1, inplace=True)
+#axis =1 in drop method shows you are dropping a column
+#inplace=True means you are editing original dataframe
+print(titanic_df.head(5))
+print("======Data Headers After Dropping Columns - Second Way =======")
+titanic_df = titanic_df.drop(['SibSp','Fare'], axis=1)
+print(titanic_df.head(5))
+
+
+# Convert the Class column to strings for easier reading
+titanic_df ['Pclass'] = titanic_df ['Pclass'].map({
+    1: 'Luxury Class',
+    2: 'Economy Class',
+    3: 'Lower Class'
+})
+
+print("======Data Headers After Transforming Class Column =======")
+print(titanic_df.head(5))
+
+titanic_df["Embarked"] = titanic_df["Embarked"].fillna("S")
+print("======Data Headers After Filling with default value for Embarked Column =======")
+print(titanic_df.head(5))
+
+# Convert the Embarked column to strings for easier reading
+titanic_df ['Embarked'] = titanic_df ['Embarked'].map({
+    'C':'Cherbourg',
+    'Q':'Queenstown',
+    'S':'Southampton'
+})
+print("======Data Headers After Transforming Embarked Column =======")
+print(titanic_df.head(5))
+
+print("\n\n\n**** DATA VISUALIZATIONS****\n\n")
+print("Visualization #1 : Survival Rate Based on Passenger Sitting Class")
+ax = sns.countplot(x = 'Pclass', hue = 'Survived', palette = 'Set1',data = titanic_df)
+ax.set(title = 'Passenger status (Survived/Died) against Passenger Class',
+       xlabel = 'Passenger Class', ylabel = 'Total')
+plt.show()   
+
+#crosstab - Cross tabulation of two or more factors
+print("Visualization #2 : Survival Rate Based on Gender")
+print(pd.crosstab(titanic_df["Sex"],titanic_df.Survived))
+ax = sns.countplot(x = 'Sex', hue = 'Survived', palette = 'Set2', data = titanic_df)
+ax.set(title = 'Total Survivors According to Sex', xlabel = 'Sex', ylabel='Total')
+plt.show()
+
+print("Visualization #3 : Survival Rate Based on Passenger Age Group")
+# We look at Age column and set Intevals on the ages and the map them to their categories as
+# (Children, Teen, Adult, Old)
+interval = (0,18,35,60,120)
+categories = ['Children','Teens','Adult', 'Old']
+#cut - Segment and sort data values into bins
+titanic_df['Age_cats'] = pd.cut(titanic_df.Age, interval, labels = categories)
+
+ax = sns.countplot(x = 'Age_cats',  data = titanic_df, hue = 'Survived', palette = 'Set3')
+
+ax.set(xlabel='Age Categorical', ylabel='Total',
+       title="Age Categorical Survival Distribution")
+plt.show()
+
+print("Visualization #4 : Survival Rate Based on Passenger Embarked Port")
+print(pd.crosstab(titanic_df['Embarked'], titanic_df.Survived))
+ax = sns.countplot(x = 'Embarked', hue = 'Survived', palette = 'Set1', data = titanic_df)
+ax.set(title = 'Survival distribution according to Embarking place')
+plt.show()
+
+
+
+
+
+
+7
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String List</title>
+</head>
+<body>
+    <h2>Enter a String</h2>
+    <input type="text" id="inptxt" placeholder="Enter a text">
+    <button id="btn" onclick="perform()">Submit</button>
+    <p id="list"></p>
+    <p id="Mylen"></p>
+    
+</body>
+<script>
+    Original_string = ["hello","hi","hola","namaste"];
+    document.getElementById("list").innerHTML = "String list contains: "+Original_string
+
+    MyLength =[]
+    function perform() {
+    newstr = document.getElementById("inptxt").value
+    Original_string.unshift(newstr)
+
+    document.getElementById("list").innerHTML = "String list contains: "+Original_string
+    
+    StrLen(Original_string,(x)=> x.length)
+    }
+   
+    
+
+   
+    function StrLen(StrList, callback)
+    { 
+
+        for(i=0;i<StrList.length;i++)
+        {
+            MyLength[i] = callback(StrList[i]);
+        }
+        document.getElementById("Mylen").innerHTML = "String Length is: "+MyLength
+    }
+
+    
+</script>
+</html>
+
+
+

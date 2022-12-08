@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>Mini cart</title>
+</head>
+<body>
+ 
+ <select id="sel1">
+ <option id="milk" value="12">Milk (Rs 12)</option>
+ <option id="eggs" value="20">Eggs (Rs 20)</option>
+ <option id="bread" value="30">Bread (Rs 30)</option>
+ <option id="Jam" value="30">Jam (Rs 30)</option>
+ <option id="Butter" value="50">Butter (Rs 50)</option>
+ <option id="Bacon" value="45">Bacon (Rs 45)</option>
+ </select>
+ 
+ <input type="number" min="0" id="qty" placeholder="Enter Quantity">
+ <input type="button" name="calculate" value="Calculate" onclick="calculate()">
+ <p id="ans" hidden> The price of the selected items is :
+ <span id="res"></span>
+ </p>
+ <button onclick="payAmount()">Pay</button>
+</body>
+<script >
+ function calculate(){
+ var price = document.getElementById("sel1").value;
+ var qty = document.getElementById("qty").value;
+ var ans = price*qty;
+ alert("Payable amount: " + ans)
+ console.log(ans)
+ document.getElementById("ans").removeAttribute("hidden")
+ document.getElementById("res").innerHTML = ans;
+}
+ 
+ function payAmount() {
+ alert("Amount successfully paid!");
+ }
+</script>
+</html>
